@@ -4,7 +4,7 @@ public class Employee
 {
     private String name;
     private EmployeeEnum employeeType;
-    private float salary;
+    private double salary;
     private String email;
     private int cpf;
     private String phone;
@@ -21,7 +21,7 @@ public class Employee
         this.name = name;
     }
 
-    public float getSalary() {
+    public double getSalary() {
         return salary;
     }
 

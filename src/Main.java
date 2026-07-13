@@ -1,14 +1,42 @@
+import Controller.*;
 import Model.Employee;
+import Repository.JobPostingRepository;
+import View.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args)
     {
 
-        Employee employee = new Employee();
-        employee.setName("felipe");
-        String a = employee.getName();
-        System.out.println(a);
+        JobPostingRepository repository = new JobPostingRepository();
+        Controllers controllers = new Controllers();
+
+        controllers.createJobPostingController =
+                new CreateJobPostingController(repository);
+
+        controllers.listJobPostingsController =
+                new ListJobPostingsController(repository);
+
+        controllers.editJobPostingController =
+                new EditJobPostingController(repository);
+        controllers.deleteJobPostingController =
+                new DeleteJobPostingController(repository);
+
+        Views views = new Views();
+        views.createJobPostingView =
+                new CreateJobPostingView(controllers.createJobPostingController);
+        views.editJobPostingView =
+                new EditJobPostingView(controllers.editJobPostingController);
+        views.deleteJobPostingView =
+                new DeleteJobPostingView(controllers.deleteJobPostingController);
+        views.listJobPostingsView =
+                new ListJobPostingsView(controllers.listJobPostingsController);
+        views.managerMenuView =
+                new ManagerMenuView(views);
+        views.candidateMenuView =
+                new CandidateMenuView(views);
+        MainMenuView mainMenuView = new MainMenuView(views);
+        mainMenuView.show();
+
     }
 }
