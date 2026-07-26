@@ -6,9 +6,9 @@ public class Employee
     private EmployeeEnum employeeType;
     private double salary;
     private String email;
-    private int cpf;
+    private String cpf;
     private String phone;
-    private String adress;
+    private String address;
     private String role;
 
 
@@ -45,11 +45,11 @@ public class Employee
         this.email = email;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -62,11 +62,11 @@ public class Employee
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getRole() {

@@ -1,0 +1,5 @@
+package Model;
+
+public enum ApplicationStatusEnum {
+    SUBMITTED, SELECTED_FOR_INTERVIEW, INTERVIEW_SCHEDULED, APPROVED, REJECTED;
+}

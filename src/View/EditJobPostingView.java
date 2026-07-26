@@ -2,22 +2,21 @@ package View;
 
 import Controller.EditJobPostingController;
 import Model.EmployeeEnum;
+import Model.JobPosting;
+import Model.JobPostingStatusEnum;
 import Model.WorkModeEnum;
 
 import java.util.Scanner;
 
 public class EditJobPostingView {
 
-
-    private EditJobPostingController controller;
     private Scanner scanner;
 
-    public EditJobPostingView(EditJobPostingController controller) {
-        this.controller = controller;
+    public EditJobPostingView() {
         this.scanner = new Scanner(System.in);
     }
 
-    public void show()
+    public JobPosting show()
     {
         System.out.println("Id:");
         int id = scanner.nextInt();
@@ -54,6 +53,14 @@ public class EditJobPostingView {
             case "REMOTE" -> work = WorkModeEnum.REMOTE;
         }
 
-        controller.edit(id,type,dep,role,salary,att,ed,ben,work);
+        return new JobPosting(id,type,dep,role,salary,att,ed,ben,work,JobPostingStatusEnum.OPEN);
+    }
+
+    public void showSuccess() {
+        System.out.println("Job posting edited successfully!");
+    }
+
+    public void showFail() {
+        System.out.println("Job Posting Does Not Exist!");
     }
 }

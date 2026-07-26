@@ -4,34 +4,38 @@ import Model.EmployeeEnum;
 import Model.JobPosting;
 import Model.WorkModeEnum;
 import Repository.JobPostingRepository;
+import View.EditJobPostingView;
+import View.Views;
 
 public class EditJobPostingController {
 
     private JobPostingRepository repository;
-
-    public EditJobPostingController(JobPostingRepository repository) {
+    private final Views views;
+    public EditJobPostingController(JobPostingRepository repository, Views views) {
         this.repository = repository;
+        this.views = views;
     }
 
-    public void edit(int id, EmployeeEnum employeetype,
-                     String department, String role, double salary, String attendance,
-                     String educationLevel, String benefits, WorkModeEnum workMode)
+    public void edit()
     {
-        JobPosting jobPosting = repository.findbyId(id);
+        JobPosting newJobPosting = views.editJobPostingView.show();
+        JobPosting oldJobPosting = repository.findbyId(newJobPosting.getId());
 
-        if (jobPosting == null)
+        if (oldJobPosting == null)
         {
-            System.out.println("Job posting not found !");
+            views.editJobPostingView.showFail();
             return;
         }
 
-        jobPosting.setAttendance(attendance);
-        jobPosting.setRole(role);
-        jobPosting.setDepartment(department);
-        jobPosting.setSalary(salary);
-        jobPosting.setEmployeetype(employeetype);
-        jobPosting.setEducationLevel(educationLevel);
-        jobPosting.setWorkMode(workMode);
-        jobPosting.setBenefits(benefits);
+        oldJobPosting.setDepartment(newJobPosting.getDepartment());
+        oldJobPosting.setRole(newJobPosting.getRole());
+        oldJobPosting.setSalary(newJobPosting.getSalary());
+        oldJobPosting.setAttendance(newJobPosting.getAttendance());
+        oldJobPosting.setEducationLevel(newJobPosting.getEducationLevel());
+        oldJobPosting.setBenefits(newJobPosting.getBenefits());
+        oldJobPosting.setWorkMode(newJobPosting.getWorkMode());
+        oldJobPosting.setEmployeetype(newJobPosting.getEmployeetype());
+
+        views.editJobPostingView.showSuccess();
     }
 }

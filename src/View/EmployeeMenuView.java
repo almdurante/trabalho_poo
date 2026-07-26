@@ -12,11 +12,13 @@ public class EmployeeMenuView {
         this.views = views;
         this.scanner = new Scanner(System.in);
     }
-    public void show()
+
+    public int show()
     {
 
         int opt;
-        do {
+        do
+        {
             System.out.println("=================MENU===================");
             System.out.println("----------------------------------------");
             System.out.println("[1] Check Job Postings");
@@ -25,31 +27,14 @@ public class EmployeeMenuView {
             System.out.println("[4] Exit");
             System.out.println("========================================");
             opt = scanner.nextInt();
+            scanner.nextLine();
 
-            switch(opt)
-            {
-                case 1:
-                {
-                    views.listJobPostingsView.show();
-                    break;
-                }
-                case 2:
-                {
+            if(opt<=0 || opt>4)
+                System.out.println("Invalid Option!");
 
-                    break;
-                }
-                case 3:
-                {
+        }while(opt<=0 || opt>4);
 
-                    break;
-                }
-                case 4:
-                {
-                    break;
-                }
-                default:
-                    System.out.println("Invalid Option !");
-            }
-        } while (opt != 4);
+        return opt;
+
     }
 }

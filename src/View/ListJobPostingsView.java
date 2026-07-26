@@ -7,20 +7,14 @@ import java.util.List;
 
 public class ListJobPostingsView {
 
-    private ListJobPostingsController controller;
-
-    public ListJobPostingsView(ListJobPostingsController controller) {
-        this.controller = controller;
-    }
-
-    public void show()
+    public void show(List<JobPosting> jobPostingList)
     {
-        List<JobPosting> jobPostingList = controller.list();
-        System.out.println("Lista de Vagas:");
+        System.out.println("Job Posting List:");
 
         for(JobPosting jobPosting : jobPostingList)
         {
-            System.out.println("------------------------------");
+            System.out.println("====================================");
+            System.out.println("Id: " + jobPosting.getId());
             System.out.println("Department: " + jobPosting.getDepartment());
             System.out.println("Role: " + jobPosting.getRole());
             System.out.println("Salary: " + jobPosting.getSalary());
@@ -31,4 +25,8 @@ public class ListJobPostingsView {
         }
     }
 
+    public void showNoJobPostings()
+    {
+        System.out.println("No Job Postings Found!");
+    }
 }

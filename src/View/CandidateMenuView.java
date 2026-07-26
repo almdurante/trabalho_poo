@@ -13,43 +13,39 @@ public class CandidateMenuView {
         this.scanner = new Scanner(System.in);
     }
 
-    public void show()
+    public int show()
     {
-
         int opt;
-        do {
+        do
+        {
             System.out.println("=================MENU===================");
             System.out.println("----------------------------------------");
-            System.out.println("[1] View Job Postings");
-            System.out.println("[2] ");
-            System.out.println("[3] ");
-            System.out.println("[4] Exit");
+            System.out.println("[1] Register");
+            System.out.println("[2] View Job Postings");
+            System.out.println("[3] Apply");
+            System.out.println("[4] View Applications");
+            System.out.println("[5] Exit");
             System.out.println("========================================");
             opt = scanner.nextInt();
+            scanner.nextLine();
 
-            switch(opt)
-            {
-                case 1:
-                {
-                    views.listJobPostingsView.show();
-                    break;
-                }
-                case 2:
-                {
+            if(opt<=0 || opt>5)
+                System.out.println("Invalid Option!");
 
-                    break;
-                }
-                case 3:
-                {
-                    break;
-                }
-                case 4:
-                {
-                    break;
-                }
-                default:
-                    System.out.println("Invalid Option !");
-            }
-        } while (opt != 4);
+        }while(opt<=0 || opt>5);
+
+        return opt;
+
+    }
+
+    public String readCpf()
+    {
+        System.out.println("CPF:");
+        return scanner.nextLine();
+    }
+
+    public void showNoCandidate()
+    {
+        System.out.println("No Candidate Found!");
     }
 }

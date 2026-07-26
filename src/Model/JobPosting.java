@@ -14,10 +14,11 @@ public class JobPosting {
     private String educationLevel;
     private String benefits;
     private WorkModeEnum workMode;
+    private JobPostingStatusEnum jobPostingStatus;
 
     public JobPosting(int id, EmployeeEnum employeetype, String department, String role,
                       double salary, String attendance, String educationLevel,
-                      String benefits, WorkModeEnum workMode) {
+                      String benefits, WorkModeEnum workMode, JobPostingStatusEnum jobPostingStatus) {
         this.id = id;
         this.employeetype = employeetype;
         this.department = department;
@@ -27,6 +28,15 @@ public class JobPosting {
         this.educationLevel = educationLevel;
         this.benefits = benefits;
         this.workMode = workMode;
+        this.jobPostingStatus = jobPostingStatus;
+    }
+
+    public JobPostingStatusEnum getJobPostingStatus() {
+        return jobPostingStatus;
+    }
+
+    public void setJobPostingStatus(JobPostingStatusEnum jobPostingStatus) {
+        this.jobPostingStatus = jobPostingStatus;
     }
 
     public int getId() {

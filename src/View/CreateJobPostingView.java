@@ -3,29 +3,29 @@ package View;
 
 import Controller.CreateJobPostingController;
 import Model.EmployeeEnum;
+import Model.JobPosting;
+import Model.JobPostingStatusEnum;
 import Model.WorkModeEnum;
 
 import java.util.Scanner;
 
 public class CreateJobPostingView {
 
-
-    private CreateJobPostingController controller;
     private Scanner scanner;
 
-    public CreateJobPostingView(CreateJobPostingController controller) {
-        this.controller = controller;
+    public CreateJobPostingView() {
+
         this.scanner = new Scanner(System.in);
     }
 
-    public void show()
+    public JobPosting readJobPosting()
     {
 
         WorkModeEnum work = null;
         EmployeeEnum type = null;
 
 
-        System.out.println("Criar vaga");
+        System.out.println("Create Job Posting");
         System.out.println("Department:");
         String dep = scanner.nextLine();
         System.out.println("Role:");
@@ -52,11 +52,16 @@ public class CreateJobPostingView {
             case "ON SITE" -> work = WorkModeEnum.ON_SITE;
             case "REMOTE" -> work = WorkModeEnum.REMOTE;
         }
+
         System.out.println("Id:");
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        controller.create(id,type,dep,role,salary,att,ed,ben,work);
+        return new JobPosting(id,type,dep,role,salary,att,ed,ben,work, JobPostingStatusEnum.OPEN);
+    }
+
+    public void showSuccess() {
+        System.out.println("Job posting created successfully!");
     }
 
 }

@@ -16,41 +16,27 @@ public class MainMenuView {
         this.scanner = new Scanner(System.in);
     }
 
-    public void show() {
+    public int show() {
         int opt;
 
-        do {
+        do
+        {
             System.out.println("=================MENU===================");
-            System.out.println("[1] Candidate");
-            System.out.println("[2] Manager");
+            System.out.println("[1] Manager");
+            System.out.println("[2] Candidate");
             System.out.println("[3] Employee");
             System.out.println("[4] Exit");
 
             opt = scanner.nextInt();
+            scanner.nextLine();
 
-            switch (opt) {
-                case 1:
-                {
-                    views.candidateMenuView.show();
-                    break;
-                }
+            if(opt<=0 || opt>4)
+                System.out.println("Invalid Option!");
 
-                case 2:
-                {
-                    views.managerMenuView.show();
-                    break;
-                }
+        }while(opt<=0 || opt>4);
 
-                case 3:
-                    break;
+        return opt;
 
-                case 4:
-                    break;
-
-                default:
-                    System.out.println("Invalid Option!");
-            }
-
-        } while (opt != 4);
     }
+
 }

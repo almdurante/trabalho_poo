@@ -4,24 +4,27 @@ import Model.EmployeeEnum;
 import Model.JobPosting;
 import Model.WorkModeEnum;
 import Repository.JobPostingRepository;
+import View.CreateJobPostingView;
+import View.Views;
 
 import java.util.Scanner;
 
 public class CreateJobPostingController {
-    private JobPostingRepository repository;
+    private final JobPostingRepository repository;
+    private final Views views;
 
-    public CreateJobPostingController(JobPostingRepository repository) {
+    public CreateJobPostingController(JobPostingRepository repository, Views views) {
         this.repository = repository;
+        this.views = views;
     }
 
-    public void create(int id,EmployeeEnum employeetype,
-                       String department,String role,double salary,String attendance,
-                       String educationLevel,String benefits,WorkModeEnum workMode)
+    public void create()
     {
-        JobPosting jobPosting = new JobPosting(id,employeetype,department,role,
-                salary,attendance,educationLevel,benefits,workMode);
-
+        JobPosting jobPosting = views.createJobPostingView.readJobPosting();
         repository.save(jobPosting);
+
+        views.createJobPostingView.showSuccess();
     }
+
 }
 
