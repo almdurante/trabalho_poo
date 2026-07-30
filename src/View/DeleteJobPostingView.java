@@ -32,7 +32,19 @@ public class DeleteJobPostingView {
         return id;
 
     }
+    public boolean confirmDelete()
+    {
+        int choice; 
 
+        System.out.println("Are you sure you want to delete this job posting?");
+        System.out.println("[1] Yes");
+        System.out.println("[2] No");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        
+        return choice == 1;
+    }
     public void showSuccess() {
         System.out.println("Job Posting deleted successfully!");
     }

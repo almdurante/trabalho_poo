@@ -65,4 +65,13 @@ public class ApplicationsRepository {
         return list;
     }
 
+    public boolean hasApplications(JobPosting jobPosting)
+    {
+        for(Application application : applications)
+        {
+            if(application.getJobPosting()==jobPosting)
+                return true;
+        }
+        return false;
+    }
 }

@@ -60,4 +60,8 @@ public class ApplyJobPostingView {
     {
         System.out.println("Application Submitted!");
     }
+    public void ShowJobPostingHasApplications()
+    {
+        System.out.println("Job Posting has Applications! Cannot delete.");
+    }
 }
