@@ -13,4 +13,6 @@ public class Controllers {
     public ListApplicationsController listApplicationsController;
     public ReviewApplicationController reviewApplicationController;
     public ApplyJobPostingController applyJobPostingController;
+    public HireCandidateController hireCandidateController;
+    public ListEmployeesController listEmployeesController;
 }

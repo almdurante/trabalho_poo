@@ -1,79 +1,44 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Employee
 {
-    private String name;
-    private EmployeeEnum employeeType;
-    private double salary;
-    private String email;
-    private String cpf;
-    private String phone;
-    private String address;
-    private String role;
+    private static int nextId = 1;
+    private int id;
 
+    private Candidate candidate;
+    private JobPosting jobPosting;
+    private LocalDate hireDate;
 
-
-    public String getName() {
-        return name;
+    public Employee(Candidate candidate, JobPosting jobPosting, LocalDate hireDate) {
+        this.hireDate = hireDate;
+        this.id = nextId++;
+        this.candidate = candidate;
+        this.jobPosting = jobPosting;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
     }
 
-    public double getSalary() {
-        return salary;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setSalary(float salary) {
-        this.salary = salary;
+    public Candidate getCandidate() {
+        return candidate;
     }
 
-    public EmployeeEnum getEmployeeType() {
-        return employeeType;
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
     }
 
-    public void setEmployeeType(EmployeeEnum employeeType) {
-        this.employeeType = employeeType;
+    public JobPosting getJobPosting() {
+        return jobPosting;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAdress() {
-        return address;
-    }
-
-    public void setAdress(String adress) {
-        this.address = adress;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setJobPosting(JobPosting jobPosting) {
+        this.jobPosting = jobPosting;
     }
 }

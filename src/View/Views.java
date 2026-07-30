@@ -7,6 +7,8 @@ public class Views {
     public CandidateMenuView candidateMenuView;
     public EmployeeMenuView employeeMenuView;
 
+    public ListEmployeesView listEmployeesView;
+    public HireCandidateView hireCandidateView;
     public ReviewApplicationView reviewApplicationView;
     public ListApplicationsView listApplicationsView;
     public ApplyJobPostingView applyJobPostingView;

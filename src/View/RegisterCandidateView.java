@@ -34,7 +34,7 @@ public class RegisterCandidateView {
         System.out.println("CPF:");
         String cpf = scanner.nextLine();
         while (cpf.isBlank()){
-            system.out.println("CPF cannot be empty. Please enter a valid CPF:");
+            System.out.println("CPF cannot be empty. Please enter a valid CPF:");
             cpf = scanner.nextLine();
         }
 
