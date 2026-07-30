@@ -21,6 +21,11 @@ public class CreateJobPostingController {
     public void create()
     {
         JobPosting jobPosting = views.createJobPostingView.readJobPosting();
+        
+        if(JobPosting.Repository.getJobPostingById(jobPosting.getId()) != null) {
+            views.createJobPostingView.showAlreadyExists();
+            return;
+        }
         repository.save(jobPosting);
 
         views.createJobPostingView.showSuccess();

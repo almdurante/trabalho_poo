@@ -26,6 +26,13 @@ public class EmployeeMenuView {
             System.out.println("[3] ");
             System.out.println("[4] Exit");
             System.out.println("========================================");
+            
+            while (!scanner.hasNextInt())
+            {
+                System.out.println("Digite um numero inteiro válido para a opção do menu.");
+                scanner.nextLine();
+            }
+            
             opt = scanner.nextInt();
             scanner.nextLine();
 

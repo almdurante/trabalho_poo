@@ -16,11 +16,24 @@ public class ApplyJobPostingView {
     {
         System.out.println("CPF:");
         String cpf = scanner.nextLine();
+        while (cpf.isEmpty()){
+            System.out.println("CPF cannot be empty. Please enter a valid CPF:");
+            cpf = scanner.nextLine();
+        }
         System.out.println("Job Posting Id:");
-        int id = scanner.nextInt();
-        scanner.nextLine();
 
-        return new ApplyData(cpf,id);
+        int option;
+        while (true){
+            if (scanner.hasNextInt()){
+                option = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+            System.out.println("Type a valid integer number for the job posting id.");
+            scanner.nextLine();
+        }
+
+        return new ApplyData(cpf,option);
     }
 
     public void showCandidateAlreadyApplied()

@@ -19,6 +19,12 @@ public class RegisterCandidateController {
     {
         Candidate candidate = views.registerCandidateView.readCandidate();
 
+        if repository.findbyCPF(candidate.getCpf()) != null
+        {
+            views.registerCandidateView.showAlreadyExists();
+            return;
+        }
+        
         repository.save(candidate);
 
         views.registerCandidateView.showSuccess();

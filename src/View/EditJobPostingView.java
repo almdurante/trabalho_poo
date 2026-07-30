@@ -19,7 +19,16 @@ public class EditJobPostingView {
     public JobPosting show()
     {
         System.out.println("Id:");
-        int id = scanner.nextInt();
+        int id;
+        while (true){
+            if (scanner.hasNextInt()){
+                id= scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+            System.out.println("Type a valid integer number for the job posting id.");
+            scanner.nextLine();
+        }
 
         WorkModeEnum work = null;
         EmployeeEnum type = null;
@@ -28,11 +37,34 @@ public class EditJobPostingView {
         System.out.println("Editar vaga");
         System.out.println("Department:");
         String dep = scanner.nextLine();
+        while (dep.isEmpty()){
+            System.out.println("Department cannot be empty. Please enter a valid department:");
+            dep = scanner.nextLine();
+        }
         System.out.println("Role:");
         String role = scanner.nextLine();
+        while (role.isEmpty()){
+            System.out.println("Role cannot be empty. Please enter a valid role:");
+            role = scanner.nextLine();
+        }
         System.out.println("Salary:");
-        double salary = scanner.nextDouble();
-        scanner.nextLine();
+        double salary;
+        while (true){
+            if (scanner.hasNextDouble()){
+                System.out.println("Type a valid number for the salary."); 
+                scanner.nextLine();
+                continue;
+            }
+            salary= scanner.nextDouble();
+            scanner.nextLine();
+  
+           if(salary <= 0){
+                System.out.println("Salary must be greater than zero. Please enter a valid salary:");
+                continue;
+            }
+            
+            break;
+        }
         System.out.println("Benefits:");
         String ben = scanner.nextLine();
         System.out.println("Attendance:");

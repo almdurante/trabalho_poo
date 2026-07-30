@@ -14,7 +14,16 @@ public class ReviewApplicationView {
     {
         System.out.println("========================================");
         System.out.println("Application Id:");
-        int id = scanner.nextInt();
+        int id;
+        while (true){
+            if (scanner.hasNextInt()){
+                id= scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+            System.out.println("Type a valid integer number for the application id.");
+            scanner.nextLine();
+        }
         return id;
     }
 
@@ -26,7 +35,13 @@ public class ReviewApplicationView {
             System.out.println("========================================");
             System.out.println("Approve [1]");
             System.out.println("Decline [2]");
+            while (!scanner.hasNextInt())
+            {
+                System.out.println("Type a valid integer number for the decision.");
+                scanner.nextLine();
+            }
             decision = scanner.nextInt();
+            scanner.nextLine();
         }while(decision<=0 || decision>2);
 
         return decision;

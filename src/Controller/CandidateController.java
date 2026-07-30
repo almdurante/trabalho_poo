@@ -31,7 +31,7 @@ public class CandidateController {
                 }
                 case 2:
                 {
-                    controllers.listJobPostingsController.list();
+                    controllers.listJobPostingsController.listOpenJobPostings();
                     break;
                 }
                 case 3:

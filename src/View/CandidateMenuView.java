@@ -26,16 +26,23 @@ public class CandidateMenuView {
             System.out.println("[4] View Applications");
             System.out.println("[5] Exit");
             System.out.println("========================================");
+
+
+            while(!scanner.hasNextInt())
+            {
+                System.out.println("Type a valid integer number for the menu option.");
+                scanner.nextLine();
+            }
+
             opt = scanner.nextInt();
             scanner.nextLine();
-
+            
             if(opt<=0 || opt>5)
                 System.out.println("Invalid Option!");
 
         }while(opt<=0 || opt>5);
 
         return opt;
-
     }
 
     public String readCpf()

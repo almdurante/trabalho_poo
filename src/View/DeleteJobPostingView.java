@@ -16,9 +16,18 @@ public class DeleteJobPostingView {
 
     public int show()
     {
+        int id;
         System.out.println("Id:");
-        int id = scanner.nextInt();
-        scanner.nextLine();
+
+        while (true){
+            if (scanner.hasNextInt()){
+                id= scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+            System.out.println("Type a valid integer number for the job posting id.");
+            scanner.nextLine();
+        }
 
         return id;
 

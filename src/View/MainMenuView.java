@@ -27,6 +27,12 @@ public class MainMenuView {
             System.out.println("[3] Employee");
             System.out.println("[4] Exit");
 
+            while (!scanner.hasNextInt())
+            {
+                System.out.println("Type a valid integer number for the menu option.");
+                scanner.nextLine();
+            }
+
             opt = scanner.nextInt();
             scanner.nextLine();
 
