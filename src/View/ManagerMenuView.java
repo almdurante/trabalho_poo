@@ -19,7 +19,7 @@ public class ManagerMenuView {
         int opt;
 
         do {
-            Colors.showHeader("MANAGER PORTAL");
+            Colors.showHeader("MANAGER AREA");
 
             System.out.println(Colors.WHITE + Colors.BOLD + " Select an option:" + Colors.RESET);
             System.out.println();
