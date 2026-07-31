@@ -53,10 +53,20 @@ public class ManagerController {
                 }
                 case 7:
                 {
-                    controllers.hireCandidateController.hire();
+                    controllers.scheduleInterviewController.schedule();
                     break;
                 }
                 case 8:
+                {
+                    controllers.evaluateInterviewController.evaluate();
+                    break;
+                }
+                case 9:
+                {
+                    controllers.hireCandidateController.hire();
+                    break;
+                }
+                case 10:
                 {
                     return;
                 }

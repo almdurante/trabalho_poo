@@ -21,7 +21,7 @@ public class MainMenuView {
         do {
             Colors.showHeader("RECRUITMENT SYSTEM - MAIN MENU");
 
-            System.out.println(Colors.WHITE + Colors.BOLD + " Please select your profile to continue:" + Colors.RESET);
+            System.out.println(Colors.WHITE + Colors.BOLD + " Please select an option:" + Colors.RESET);
             System.out.println();
             System.out.println(Colors.CYAN + "  [1]" + Colors.RESET + " Manager Area");
             System.out.println(Colors.CYAN + "  [2]" + Colors.RESET + " Candidate Area");

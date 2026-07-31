@@ -44,6 +44,10 @@ public class Main {
                 new EmployeeMenuView(views);
         views.registerCandidateView =
                 new RegisterCandidateView();
+        views.scheduleInterviewView = 
+                new ScheduleInterviewView();
+        views.evaluateInterviewView = 
+                new EvaluateInterviewView();
         views.hireCandidateView = 
                 new HireCandidateView();
 
@@ -54,7 +58,7 @@ public class Main {
         controllers.editJobPostingController =
                 new EditJobPostingController(jobPostingRepository,views);
         controllers.deleteJobPostingController =
-                new DeleteJobPostingController(views, jobPostingRepository);
+                new DeleteJobPostingController(views, jobPostingRepository, applicationsRepository);
         controllers.applyJobPostingController =
                 new ApplyJobPostingController(views,candidateRepository,jobPostingRepository,applicationsRepository);
         controllers.listApplicationsController
@@ -63,6 +67,10 @@ public class Main {
                 = new RegisterCandidateController(candidateRepository,views);
         controllers.reviewApplicationController =
                 new ReviewApplicationController(controllers.listApplicationsController,views,applicationsRepository);
+        controllers.scheduleInterviewController = 
+                new ScheduleInterviewController(views.scheduleInterviewView, applicationsRepository);
+        controllers.evaluateInterviewController = 
+                new EvaluateInterviewController(views.evaluateInterviewView, applicationsRepository);
         controllers.hireCandidateController = 
                 new HireCandidateController(views.hireCandidateView, applicationsRepository, employeeRepository, candidateRepository, jobPostingRepository);
 

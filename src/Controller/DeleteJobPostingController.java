@@ -2,6 +2,7 @@ package Controller;
 
 import Model.JobPosting;
 import Repository.JobPostingRepository;
+import Repository.ApplicationsRepository;
 import View.Views;
 
 public class DeleteJobPostingController {
@@ -9,12 +10,12 @@ public class DeleteJobPostingController {
 
     private final Views views;
     private JobPostingRepository repository;
-    private final ApplicationRepository applicationRepository;
+    private final ApplicationsRepository applicationsRepository;
 
-    public DeleteJobPostingController(Views views, JobPostingRepository repository, ApplicationRepository applicationRepository) {
+    public DeleteJobPostingController(Views views, JobPostingRepository repository, ApplicationsRepository applicationRepository) {
         this.views = views;
         this.repository = repository;
-        this.applicationRepository = applicationRepository;
+        this.applicationsRepository = applicationRepository;
     }
 
     public void delete()
@@ -28,9 +29,9 @@ public class DeleteJobPostingController {
             views.deleteJobPostingView.showFail();
             return;
         }
-        if (applicationRepository.hasApplications(jobPosting))
+        if (applicationsRepository.hasApplications(jobPosting))
         {
-            views.deleteJobPostingView.ShowJobPostingHasApplications();
+            views.deleteJobPostingView.showJobPostingHasApplications();
             return;
         }
 

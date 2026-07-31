@@ -21,7 +21,7 @@ public class EditJobPostingController {
         JobPosting newJobPosting = views.editJobPostingView.show();
         JobPosting oldJobPosting = repository.findbyId(newJobPosting.getId());
 
-        if (oldJobPosting.isEmpty())
+        if (oldJobPosting == null)
         {
             views.editJobPostingView.showFail();
             return;

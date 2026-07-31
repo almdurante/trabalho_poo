@@ -46,6 +46,11 @@ public class DeleteJobPostingView {
         return choice == 1;
     }
 
+    public void showJobPostingHasApplications() {
+        Colors.error("Cannot delete: This Job Posting already has applications!");
+        Colors.showDivider();
+    }
+
     public void showSuccess() {
         Colors.success("Job Posting deleted successfully!");
         Colors.showDivider();

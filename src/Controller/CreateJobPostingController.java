@@ -22,7 +22,7 @@ public class CreateJobPostingController {
     {
         JobPosting jobPosting = views.createJobPostingView.readJobPosting();
         
-        if(JobPosting.Repository.getJobPostingById(jobPosting.getId()) != null) {
+        if(repository.findbyId(jobPosting.getId()) != null) {
             views.createJobPostingView.showAlreadyExists();
             return;
         }

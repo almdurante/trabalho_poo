@@ -15,7 +15,7 @@ public class ApplyJobPostingView {
     public ApplyData show() {
         Colors.showHeader("APPLY FOR JOB POSTING");
 
-        System.out.println(Colors.WHITE + Colors.BOLD + " Please enter the required details to apply:" + Colors.RESET);
+        System.out.println(Colors.WHITE + Colors.BOLD + " Please enter the required information to apply:" + Colors.RESET);
         System.out.println();
 
         System.out.print(Colors.BOLD + " CPF: " + Colors.RESET);
