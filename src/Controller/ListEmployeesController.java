@@ -22,9 +22,9 @@ public class ListEmployeesController {
         List<Employee> employees = employeeRepository.findAll();
         if(employees.isEmpty())
         {
-            views.listEmployeesView.show(employees);
+            views.listEmployeesView.showNoEmployees();
             return;
         }
-        views.listEmployeesView.showNoEmployees();
+        views.listEmployeesView.show(employees);
     }
 }

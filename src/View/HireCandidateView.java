@@ -57,4 +57,14 @@ public class HireCandidateView {
     {
         System.out.println("Candidate is already and employee!");
     }
+
+    public void showApplicationCorrupted()
+    {
+        System.out.println("Application data is corrupted.");
+    }
+
+    public void showUnexpectedError()
+    {
+        System.out.println("An unexpected error occurred while hiring the candidate.");
+    }
 }

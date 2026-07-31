@@ -12,52 +12,69 @@ public class ApplyJobPostingView {
         this.scanner = new Scanner(System.in);
     }
 
-    public ApplyData show()
-    {
-        System.out.println("CPF:");
+    public ApplyData show() {
+        Colors.showHeader("APPLY FOR JOB POSTING");
+
+        System.out.println(Colors.WHITE + Colors.BOLD + " Please enter the required information to apply:" + Colors.RESET);
+        System.out.println();
+
+        System.out.print(Colors.BOLD + " CPF: " + Colors.RESET);
         String cpf = scanner.nextLine();
-        while (cpf.isEmpty()){
-            System.out.println("CPF cannot be empty. Please enter a valid CPF:");
+        while (cpf.isEmpty()) {
+            Colors.error("CPF cannot be empty. Please enter a valid CPF:");
+            System.out.print(Colors.BOLD + " CPF: " + Colors.RESET);
             cpf = scanner.nextLine();
         }
-        System.out.println("Job Posting Id:");
 
+        System.out.print(Colors.BOLD + " Job Posting Id: " + Colors.RESET);
         int option;
-        while (true){
-            if (scanner.hasNextInt()){
+        while (true) {
+            if (scanner.hasNextInt()) {
                 option = scanner.nextInt();
                 scanner.nextLine();
                 break;
             }
-            System.out.println("Type a valid integer number for the job posting id.");
+            Colors.error("Type a valid integer number for the job posting id.");
+            System.out.print(Colors.BOLD + " Job Posting Id: " + Colors.RESET);
             scanner.nextLine();
         }
 
-        return new ApplyData(cpf,option);
+        Colors.showDivider();
+        return new ApplyData(cpf, option);
     }
 
-    public void showCandidateAlreadyApplied()
-    {
-        System.out.println("Candidate Already Applied for this Job!");
+    public void showCandidateAlreadyApplied() {
+        Colors.warning("Candidate Already Applied for this Job!");
+        Colors.showDivider();
     }
-    public void showCandidateNotFound()
-    {
-        System.out.println("Candidate Not Found!");
+
+    public void showCandidateNotFound() {
+        Colors.error("Candidate Not Found!");
+        Colors.showDivider();
     }
-    public void showJobPostingNotFound()
-    {
-        System.out.println("Job Posting Not Found!");
+
+    public void showJobPostingNotFound() {
+        Colors.error("Job Posting Not Found!");
+        Colors.showDivider();
     }
-    public void showCandidateNotAvailable()
-    {
-        System.out.println("Candidate Not Available!");
+
+    public void showCandidateNotAvailable() {
+        Colors.warning("Candidate Not Available!");
+        Colors.showDivider();
     }
-    public void showJobPostingClosed()
-    {
-        System.out.println("Job Posting Closed!");
+
+    public void showJobPostingClosed() {
+        Colors.warning("Job Posting Closed!");
+        Colors.showDivider();
     }
-    public void showSuccess()
-    {
-        System.out.println("Application Submitted!");
+
+    public void showSuccess() {
+        Colors.success("Application Submitted!");
+        Colors.showDivider();
+    }
+
+    public void ShowJobPostingHasApplications() {
+        Colors.error("Job Posting has Applications! Cannot delete.");
+        Colors.showDivider();
     }
 }

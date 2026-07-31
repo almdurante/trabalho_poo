@@ -17,4 +17,6 @@ public class Views {
     public ListJobPostingsView listJobPostingsView;
     public EditJobPostingView editJobPostingView;
     public DeleteJobPostingView deleteJobPostingView;
+    public ScheduleInterviewView scheduleInterviewView;
+    public EvaluateInterviewView evaluateInterviewView;
 }

@@ -16,68 +16,82 @@ public class EditJobPostingView {
         this.scanner = new Scanner(System.in);
     }
 
-    public JobPosting show()
-    {
-        System.out.println("Id:");
+    public JobPosting show() {
+        Colors.showHeader("EDIT JOB POSTING");
+
+        System.out.print(Colors.BOLD + " Id: " + Colors.RESET);
         int id;
-        while (true){
-            if (scanner.hasNextInt()){
-                id= scanner.nextInt();
+        while (true) {
+            if (scanner.hasNextInt()) {
+                id = scanner.nextInt();
                 scanner.nextLine();
                 break;
             }
-            System.out.println("Type a valid integer number for the job posting id.");
+            Colors.error("Type a valid integer number for the job posting id.");
+            System.out.print(Colors.BOLD + " Id: " + Colors.RESET);
             scanner.nextLine();
         }
 
         WorkModeEnum work = null;
         EmployeeEnum type = null;
 
-        scanner.nextLine();
-        System.out.println("Editar vaga");
-        System.out.println("Department:");
+        System.out.println();
+        System.out.println(Colors.WHITE + Colors.BOLD + " Please enter the updated details:" + Colors.RESET);
+
+        System.out.print(Colors.BOLD + " Department: " + Colors.RESET);
         String dep = scanner.nextLine();
-        while (dep.isEmpty()){
-            System.out.println("Department cannot be empty. Please enter a valid department:");
+        while (dep.isEmpty()) {
+            Colors.error("Department cannot be empty. Please enter a valid department:");
+            System.out.print(Colors.BOLD + " Department: " + Colors.RESET);
             dep = scanner.nextLine();
         }
-        System.out.println("Role:");
+
+        System.out.print(Colors.BOLD + " Role: " + Colors.RESET);
         String role = scanner.nextLine();
-        while (role.isEmpty()){
-            System.out.println("Role cannot be empty. Please enter a valid role:");
+        while (role.isEmpty()) {
+            Colors.error("Role cannot be empty. Please enter a valid role:");
+            System.out.print(Colors.BOLD + " Role: " + Colors.RESET);
             role = scanner.nextLine();
         }
-        System.out.println("Salary:");
+
+        System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
         double salary;
-        while (true){
-            if (scanner.hasNextDouble()){
-                System.out.println("Type a valid number for the salary."); 
+        while (true) {
+            if (!scanner.hasNextDouble()) {
+                Colors.error("Type a valid number for the salary.");
+                System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
                 scanner.nextLine();
                 continue;
             }
-            salary= scanner.nextDouble();
+            salary = scanner.nextDouble();
             scanner.nextLine();
-  
-           if(salary <= 0){
-                System.out.println("Salary must be greater than zero. Please enter a valid salary:");
+
+            if (salary <= 0) {
+                Colors.error("Salary must be greater than zero. Please enter a valid salary:");
+                System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
                 continue;
             }
-            
+
             break;
         }
-        System.out.println("Benefits:");
+
+        System.out.print(Colors.BOLD + " Benefits: " + Colors.RESET);
         String ben = scanner.nextLine();
-        System.out.println("Attendance:");
+
+        System.out.print(Colors.BOLD + " Attendance: " + Colors.RESET);
         String att = scanner.nextLine();
-        System.out.println("Educational Level:");
+
+        System.out.print(Colors.BOLD + " Educational Level: " + Colors.RESET);
         String ed = scanner.nextLine();
-        System.out.println("Type");
+
+        System.out.print(Colors.BOLD + " Type (CLT/PJ): " + Colors.RESET);
         String t = scanner.nextLine();
         switch (t) {
             case "CLT" -> type = EmployeeEnum.CLT;
             case "PJ" -> type = EmployeeEnum.PJ;
         }
-        System.out.println("Work Mode:");
+
+        System.out.print(Colors.BOLD + " Work Mode (HYBRID/ON SITE/REMOTE): " + Colors.RESET);
         String w = scanner.nextLine();
         switch (w) {
             case "HYBRID" -> work = WorkModeEnum.HYBRID;
@@ -85,14 +99,18 @@ public class EditJobPostingView {
             case "REMOTE" -> work = WorkModeEnum.REMOTE;
         }
 
-        return new JobPosting(id,type,dep,role,salary,att,ed,ben,work,JobPostingStatusEnum.OPEN);
+        Colors.showDivider();
+
+        return new JobPosting(id, type, dep, role, salary, att, ed, ben, work, JobPostingStatusEnum.OPEN);
     }
 
     public void showSuccess() {
-        System.out.println("Job posting edited successfully!");
+        Colors.success("Job posting edited successfully!");
+        Colors.showDivider();
     }
 
     public void showFail() {
-        System.out.println("Job Posting Does Not Exist!");
+        Colors.error("Job Posting Does Not Exist!");
+        Colors.showDivider();
     }
 }

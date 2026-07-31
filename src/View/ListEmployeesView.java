@@ -9,7 +9,7 @@ public class ListEmployeesView {
 
     public void show(List<Employee> employeeList)
     {
-        System.out.println("Application List:");
+        System.out.println("Employees List:");
 
         for(Employee employee : employeeList)
         {

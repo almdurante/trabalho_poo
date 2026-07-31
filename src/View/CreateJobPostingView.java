@@ -1,6 +1,5 @@
 package View;
 
-
 import Controller.CreateJobPostingController;
 import Model.EmployeeEnum;
 import Model.JobPosting;
@@ -14,113 +13,142 @@ public class CreateJobPostingView {
     private Scanner scanner;
 
     public CreateJobPostingView() {
-
         this.scanner = new Scanner(System.in);
     }
 
-    public JobPosting readJobPosting()
-    {
-
+    public JobPosting readJobPosting() {
         WorkModeEnum work = null;
         EmployeeEnum type = null;
 
+        Colors.showHeader("CREATE JOB POSTING");
 
-        System.out.println("Create Job Posting");
-        System.out.println("Department:");
+        System.out.println(Colors.WHITE + Colors.BOLD + " Please fill in the job posting details:" + Colors.RESET);
+        System.out.println();
+
+        System.out.print(Colors.BOLD + " Department: " + Colors.RESET);
         String dep = scanner.nextLine();
-        while (dep.isEmpty()){
-            System.out.println("Department cannot be empty. Please enter a valid department:");
+        while (dep.isEmpty()) {
+            Colors.error("Department cannot be empty. Please enter a valid department:");
+            System.out.print(Colors.BOLD + " Department: " + Colors.RESET);
             dep = scanner.nextLine();
         }
-        System.out.println("Role:");
+
+        System.out.print(Colors.BOLD + " Role: " + Colors.RESET);
         String role = scanner.nextLine();
-        while (role.isEmpty()){
-            System.out.println("Role cannot be empty. Please enter a valid role:");
+        while (role.isEmpty()) {
+            Colors.error("Role cannot be empty. Please enter a valid role:");
+            System.out.print(Colors.BOLD + " Role: " + Colors.RESET);
             role = scanner.nextLine();
         }
-        System.out.println("Salary:");
 
+        System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
         double salary;
-        while(true){    
-            if(scanner.hasNextDouble()){
-                System.out.println("Type a valid number for the salary.");
+        while (true) {
+            if (!scanner.hasNextDouble()) {
+                Colors.error("Type a valid number for the salary.");
+                System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
                 scanner.nextLine();
                 continue;
             }
             salary = scanner.nextDouble();
             scanner.nextLine();
 
-            if(salary <= 0){
-                System.out.println("Salary must be greater than zero. Please enter a valid salary:");
+            if (salary <= 0) {
+                Colors.error("Salary must be greater than zero. Please enter a valid salary:");
+                System.out.print(Colors.BOLD + " Salary: " + Colors.RESET);
                 continue;
             }
-            
+
             break;
         }
-        System.out.println("Benefits:");
+
+        System.out.print(Colors.BOLD + " Benefits: " + Colors.RESET);
         String ben = scanner.nextLine();
-        System.out.println("Attendance:");
+
+        System.out.print(Colors.BOLD + " Attendance: " + Colors.RESET);
         String att = scanner.nextLine();
-        System.out.println("Educational Level:");
+
+        System.out.print(Colors.BOLD + " Educational Level: " + Colors.RESET);
         String ed = scanner.nextLine();
-        System.out.println(" Employee Type");
-        System.out.println("[1] CLT ");
-        System.out.println("[2] PJ");
-        
+
+        System.out.println();
+        System.out.println(Colors.WHITE + Colors.BOLD + " Employee Type:" + Colors.RESET);
+        System.out.println(Colors.CYAN + "  [1]" + Colors.RESET + " CLT");
+        System.out.println(Colors.CYAN + "  [2]" + Colors.RESET + " PJ");
+        System.out.print(Colors.BOLD + " Select type: " + Colors.RESET);
+
         int option;
-        do{
-            while (!scanner.hasNextInt())
-            {
-                System.out.println("Type a valid integer number for the employee type.");
+        do {
+            while (!scanner.hasNextInt()) {
+                Colors.error("Type a valid integer number for the employee type.");
+                System.out.print(Colors.BOLD + " Select type: " + Colors.RESET);
                 scanner.nextLine();
             }
 
             option = scanner.nextInt();
             scanner.nextLine();
 
-        }while (option<1 || option>2);
+            if (option < 1 || option > 2) {
+                Colors.error("Invalid Option!");
+                System.out.print(Colors.BOLD + " Select type: " + Colors.RESET);
+            }
+
+        } while (option < 1 || option > 2);
         type = (option == 1) ? EmployeeEnum.CLT : EmployeeEnum.PJ;
 
-        System.out.println("Work Mode:");
-        System.out.println("[1] HYBRID");
-        System.out.println("[2] REMOTE");
-        System.out.println("[3] ONSITE");
+        System.out.println();
+        System.out.println(Colors.WHITE + Colors.BOLD + " Work Mode:" + Colors.RESET);
+        System.out.println(Colors.CYAN + "  [1]" + Colors.RESET + " HYBRID");
+        System.out.println(Colors.CYAN + "  [2]" + Colors.RESET + " REMOTE");
+        System.out.println(Colors.CYAN + "  [3]" + Colors.RESET + " ONSITE");
+        System.out.print(Colors.BOLD + " Select work mode: " + Colors.RESET);
 
         int option2;
-        do{
-            while (!scanner.hasNextInt())
-            {
-                System.out.println("Type a valid integer number for the work mode.");
+        do {
+            while (!scanner.hasNextInt()) {
+                Colors.error("Type a valid integer number for the work mode.");
+                System.out.print(Colors.BOLD + " Select work mode: " + Colors.RESET);
                 scanner.nextLine();
             }
 
             option2 = scanner.nextInt();
             scanner.nextLine();
 
-        }while (option2<1 || option2>3);
+            if (option2 < 1 || option2 > 3) {
+                Colors.error("Invalid Option!");
+                System.out.print(Colors.BOLD + " Select work mode: " + Colors.RESET);
+            }
+
+        } while (option2 < 1 || option2 > 3);
         work = (option2 == 1) ? WorkModeEnum.HYBRID : (option2 == 2) ? WorkModeEnum.REMOTE : WorkModeEnum.ON_SITE;
 
-        System.out.println("Id:");
+        System.out.println();
+        System.out.print(Colors.BOLD + " Id: " + Colors.RESET);
         int id;
-        while (true){
-            if (scanner.hasNextInt()){
-                id= scanner.nextInt();
+        while (true) {
+            if (scanner.hasNextInt()) {
+                id = scanner.nextInt();
                 scanner.nextLine();
                 break;
             }
 
-            System.out.println("Type a valid integer number for the job posting id.");
+            Colors.error("Type a valid integer number for the job posting id.");
+            System.out.print(Colors.BOLD + " Id: " + Colors.RESET);
             scanner.nextLine();
         }
 
-        return new JobPosting(id,type,dep,role,salary,att,ed,ben,work, JobPostingStatusEnum.OPEN);
+        Colors.showDivider();
+
+        return new JobPosting(id, type, dep, role, salary, att, ed, ben, work, JobPostingStatusEnum.OPEN);
     }
 
     public void showSuccess() {
-        System.out.println("Job posting created successfully!");
+        Colors.success("Job posting created successfully!");
+        Colors.showDivider();
     }
 
     public void showAlreadyExists() {
-        System.out.println("Job posting with this ID already exists!");
+        Colors.warning("Job posting with this ID already exists!");
+        Colors.showDivider();
     }
 }

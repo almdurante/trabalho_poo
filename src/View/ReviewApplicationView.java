@@ -10,65 +10,71 @@ public class ReviewApplicationView {
         this.scanner = new Scanner(System.in);
     }
 
-    public int readId()
-    {
-        System.out.println("========================================");
-        System.out.println("Application Id:");
+    public int readId() {
+        Colors.showHeader("REVIEW APPLICATION");
+
+        System.out.print(Colors.BOLD + " Application Id: " + Colors.RESET);
         int id;
-        while (true){
-            if (scanner.hasNextInt()){
-                id= scanner.nextInt();
+        while (true) {
+            if (scanner.hasNextInt()) {
+                id = scanner.nextInt();
                 scanner.nextLine();
                 break;
             }
-            System.out.println("Type a valid integer number for the application id.");
+            Colors.error("Type a valid integer number for the application id.");
+            System.out.print(Colors.BOLD + " Application Id: " + Colors.RESET);
             scanner.nextLine();
         }
         return id;
     }
 
-    public int readDecision()
-    {
+    public int readDecision() {
         int decision;
-        do
-        {
-            System.out.println("========================================");
-            System.out.println("Approve [1]");
-            System.out.println("Decline [2]");
-            while (!scanner.hasNextInt())
-            {
-                System.out.println("Type a valid integer number for the decision.");
+        do {
+            System.out.println();
+            System.out.println(Colors.WHITE + Colors.BOLD + " Select decision:" + Colors.RESET);
+            System.out.println(Colors.GREEN + "  [1]" + Colors.RESET + " Approve");
+            System.out.println(Colors.RED + "  [2]" + Colors.RESET + " Decline");
+            System.out.print(Colors.BOLD + " Select option: " + Colors.RESET);
+
+            while (!scanner.hasNextInt()) {
+                Colors.error("Type a valid integer number for the decision.");
+                System.out.print(Colors.BOLD + " Select option: " + Colors.RESET);
                 scanner.nextLine();
             }
             decision = scanner.nextInt();
             scanner.nextLine();
-        }while(decision<=0 || decision>2);
+
+            if (decision <= 0 || decision > 2) {
+                Colors.error("Invalid option! Please select 1 or 2.");
+            }
+        } while (decision <= 0 || decision > 2);
 
         return decision;
     }
 
-    public void showApplicationNotFound()
-    {
-        System.out.println("Application not Found!");
+    public void showApplicationNotFound() {
+        Colors.error("Application not Found!");
+        Colors.showDivider();
     }
 
-    public void showApplicationAlreadyReviewed()
-    {
-        System.out.println("Application Already Reviewed!");
+    public void showApplicationAlreadyReviewed() {
+        Colors.warning("Application Already Reviewed!");
+        Colors.showDivider();
     }
 
-    public void showRejected()
-    {
-        System.out.println("Application Rejected!");
+    public void showRejected() {
+        Colors.error("Application Rejected!");
+        Colors.showDivider();
     }
 
-    public void showSelectedforInterview()
-    {
-        System.out.println("Application Selected for Interview!");
-    }
-    public void showNoSubmittedApplications()
-    {
-        System.out.println("There are no Submitted Applications!");
+    public void showSelectedforInterview() {
+        Colors.success("Application Selected for Interview!");
+        Colors.showDivider();
     }
 
+    public void showNoSubmittedApplications() {
+        Colors.warning("There are no Submitted Applications!");
+        Colors.showDivider();
+    }
 }

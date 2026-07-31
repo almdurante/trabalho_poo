@@ -55,13 +55,29 @@ public class HireCandidateController {
             return;
         }
 
-        Employee employee = new Employee(application.getCandidate(),application.getJobPosting(), LocalDate.now());
+        if (application.getCandidate() == null || application.getJobPosting() == null)
+        {
+            views.hireCandidateView.showApplicationCorrupted();
+            return;
+        }
 
-        employeeRepository.save(employee);
-        application.setApplicationStatus(ApplicationStatusEnum.HIRED);
-        application.getCandidate().setCandidateStatusEnum(CandidateStatusEnum.HIRED);
+        try {
 
-        views.hireCandidateView.showSuccess();
+            Employee employee = new Employee(
+                    application.getCandidate(),
+                    application.getJobPosting(),
+                    LocalDate.now());
+
+            employeeRepository.save(employee);
+
+            application.setApplicationStatus(ApplicationStatusEnum.HIRED);
+            application.getCandidate().setCandidateStatusEnum(CandidateStatusEnum.HIRED);
+
+            views.hireCandidateView.showSuccess();
+
+        } catch (Exception e) {
+            views.hireCandidateView.showUnexpectedError();
+        }
 
     }
 }

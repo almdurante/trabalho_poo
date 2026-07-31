@@ -4,6 +4,8 @@ import Repository.ApplicationsRepository;
 import Repository.CandidateRepository;
 import Repository.EmployeeRepository;
 import Repository.JobPostingRepository;
+
+
 import View.*;
 
 
@@ -48,6 +50,11 @@ public class Main {
                 new HireCandidateView();
         views.listEmployeesView =
                 new ListEmployeesView();
+        views.scheduleInterviewView =
+                new ScheduleInterviewView();
+        views.evaluateInterviewView =
+                new EvaluateInterviewView();
+
 
         controllers.createJobPostingController =
                 new CreateJobPostingController(jobPostingRepository, views);
@@ -56,7 +63,7 @@ public class Main {
         controllers.editJobPostingController =
                 new EditJobPostingController(jobPostingRepository,views);
         controllers.deleteJobPostingController =
-                new DeleteJobPostingController(views, jobPostingRepository);
+                new DeleteJobPostingController(views, jobPostingRepository, applicationsRepository);
         controllers.applyJobPostingController =
                 new ApplyJobPostingController(views,candidateRepository,jobPostingRepository,applicationsRepository);
         controllers.listApplicationsController
@@ -65,8 +72,12 @@ public class Main {
                 = new RegisterCandidateController(candidateRepository,views);
         controllers.reviewApplicationController =
                 new ReviewApplicationController(controllers.listApplicationsController,views,applicationsRepository);
+        controllers.scheduleInterviewController =
+                new ScheduleInterviewController(views.scheduleInterviewView, applicationsRepository);
+        controllers.evaluateInterviewController =
+                new EvaluateInterviewController(views.evaluateInterviewView, applicationsRepository);
         controllers.hireCandidateController =
-                new HireCandidateController(applicationsRepository, controllers.listApplicationsController, views, employeeRepository);
+                new HireCandidateController(applicationsRepository, controllers.listApplicationsController,views,employeeRepository);
         controllers.listEmployeesController =
                 new ListEmployeesController(employeeRepository,views);
 

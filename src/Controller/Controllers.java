@@ -15,4 +15,6 @@ public class Controllers {
     public ApplyJobPostingController applyJobPostingController;
     public HireCandidateController hireCandidateController;
     public ListEmployeesController listEmployeesController;
+    public ScheduleInterviewController scheduleInterviewController;
+    public EvaluateInterviewController evaluateInterviewController;
 }
