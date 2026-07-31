@@ -29,7 +29,10 @@ public class ManagerMenuView {
             System.out.println(Colors.CYAN + "  [4]" + Colors.RESET + " Delete Job Posting");
             System.out.println(Colors.CYAN + "  [5]" + Colors.RESET + " List Applications");
             System.out.println(Colors.CYAN + "  [6]" + Colors.RESET + " Review Applications");
-            System.out.println(Colors.RED + "  [7]" + Colors.RESET + " Exit");
+            System.out.println(Colors.CYAN + "  [7]" + Colors.RESET + " Schedule Interview");
+            System.out.println(Colors.CYAN + "  [8]" + Colors.RESET + " Evaluate Interview");
+            System.out.println(Colors.CYAN + "  [9]" + Colors.RESET + " Hire Candidate");
+            System.out.println(Colors.RED + "  [10]" + Colors.RESET + " Exit");
             System.out.println();
             Colors.showDivider();
             System.out.print(Colors.BOLD + " Select option: " + Colors.RESET);
@@ -43,11 +46,11 @@ public class ManagerMenuView {
             opt = scanner.nextInt();
             scanner.nextLine();
 
-            if (opt <= 0 || opt > 7) {
+            if (opt <= 0 || opt > 10) {
                 Colors.error("Invalid Option!");
                 System.out.println();
             }
-        } while (opt <= 0 || opt > 7);
+        } while (opt <= 0 || opt > 10);
 
         return opt;
     }

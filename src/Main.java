@@ -3,6 +3,7 @@ import Model.Employee;
 import Repository.ApplicationsRepository;
 import Repository.CandidateRepository;
 import Repository.JobPostingRepository;
+import Repository.EmployeeRepository;
 import View.*;
 
 
@@ -12,6 +13,7 @@ public class Main {
         ApplicationsRepository applicationsRepository = new ApplicationsRepository();
         JobPostingRepository jobPostingRepository = new JobPostingRepository();
         CandidateRepository candidateRepository = new CandidateRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         Controllers controllers = new Controllers();
 
 
@@ -42,6 +44,12 @@ public class Main {
                 new EmployeeMenuView(views);
         views.registerCandidateView =
                 new RegisterCandidateView();
+        views.scheduleInterviewView = 
+                new ScheduleInterviewView();
+        views.evaluateInterviewView = 
+                new EvaluateInterviewView();
+        views.hireCandidateView = 
+                new HireCandidateView();
 
         controllers.createJobPostingController =
                 new CreateJobPostingController(jobPostingRepository, views);
@@ -50,7 +58,7 @@ public class Main {
         controllers.editJobPostingController =
                 new EditJobPostingController(jobPostingRepository,views);
         controllers.deleteJobPostingController =
-                new DeleteJobPostingController(views, jobPostingRepository);
+                new DeleteJobPostingController(views, jobPostingRepository, applicationsRepository);
         controllers.applyJobPostingController =
                 new ApplyJobPostingController(views,candidateRepository,jobPostingRepository,applicationsRepository);
         controllers.listApplicationsController
@@ -59,7 +67,12 @@ public class Main {
                 = new RegisterCandidateController(candidateRepository,views);
         controllers.reviewApplicationController =
                 new ReviewApplicationController(controllers.listApplicationsController,views,applicationsRepository);
-
+        controllers.scheduleInterviewController = 
+                new ScheduleInterviewController(views.scheduleInterviewView, applicationsRepository);
+        controllers.evaluateInterviewController = 
+                new EvaluateInterviewController(views.evaluateInterviewView, applicationsRepository);
+        controllers.hireCandidateController = 
+                new HireCandidateController(views.hireCandidateView, applicationsRepository, employeeRepository, candidateRepository, jobPostingRepository);
 
         ManagerController managerController =
                 new ManagerController(views.managerMenuView,controllers);
