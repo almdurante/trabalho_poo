@@ -9,29 +9,48 @@ public class ListEmployeesView {
 
     public void show(List<Employee> employeeList)
     {
-        System.out.println("Employees List:");
+        Colors.showHeader("EMPLOYEES LIST");
 
-        for(Employee employee : employeeList)
+        for (Employee employee : employeeList)
         {
-            System.out.println("====================================");
-            System.out.println("Employee Id: " + employee.getId());
-            System.out.println("Name: " + employee.getCandidate().getName());
-            System.out.println("CPF: " + employee.getCandidate().getCpf());
-            System.out.println("Department: " + employee.getJobPosting().getDepartment());
-            System.out.println("Role: " + employee.getJobPosting().getRole());
-            System.out.println("Salary: " + employee.getJobPosting().getSalary());
-            System.out.println("Work Mode: " + employee.getJobPosting().getWorkMode());
-            System.out.println("Employee Type: " + employee.getJobPosting().getEmployeetype());
-            System.out.println("====================================");
+            System.out.println(Colors.GRAY + "┌────────────────────────────────────────────────────────────┐" + Colors.RESET);
 
+            System.out.printf(
+                    Colors.GRAY + "│ " + Colors.BOLD + Colors.CYAN + "%-18s " + Colors.GRAY + ": " +
+                    Colors.WHITE + Colors.BOLD + "%-37s " + Colors.GRAY + "│\n" + Colors.RESET,
+                    "Employee Id", employee.getId());
 
+            System.out.println(Colors.GRAY + "├────────────────────────────────────────────────────────────┤" + Colors.RESET);
+
+            printField("Name", employee.getCandidate().getName());
+            printField("CPF", employee.getCandidate().getCpf());
+            printField("Department", employee.getJobPosting().getDepartment());
+            printField("Role", employee.getJobPosting().getRole());
+            printField("Salary", employee.getJobPosting().getSalary());
+            printField("Work Mode", employee.getJobPosting().getWorkMode());
+            printField("Employee Type", employee.getJobPosting().getEmployeetype());
+
+            System.out.println(Colors.GRAY + "└────────────────────────────────────────────────────────────┘" + Colors.RESET);
+            System.out.println();
         }
 
+        Colors.showDivider();
     }
 
     public void showNoEmployees()
     {
-        System.out.println("No Employeees Found!");
+        Colors.showHeader("EMPLOYEES LIST");
+        Colors.warning("No Employeees Found!");
+        Colors.showDivider();
+    }
+
+    private void printField(String label, Object value)
+    {
+        String strVal = (value != null) ? value.toString() : "N/A";
+        System.out.printf(
+                Colors.GRAY + "│ " + Colors.WHITE + "%-18s " + Colors.GRAY + ": " +
+                Colors.RESET + "%-37s " + Colors.GRAY + "│\n" + Colors.RESET,
+                label, strVal);
     }
 }
 

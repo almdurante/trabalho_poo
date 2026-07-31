@@ -10,16 +10,17 @@ public class EvaluateInterviewView {
     }
 
     public int askForApplicationId() {
-        System.out.println("\n--- Evaluate Interview ---");
-        System.out.print("Enter the ID of the application: ");
+        Colors.showHeader("EVALUATE INTERVIEW");
+        System.out.print(Colors.BOLD + " Enter the ID of the application: " + Colors.RESET);
         return Integer.parseInt(scanner.nextLine());
     }
 
     public int askForDecision() {
-        System.out.println("What is the result of the interview?");
-        System.out.println("[1] Approve (APPROVED)");
-        System.out.println("[2] Reject (REJECTED)");
-        System.out.print("Choose an option: ");
+        System.out.println(Colors.WHITE + Colors.BOLD + " What is the result of the interview?" + Colors.RESET);
+        System.out.println(Colors.GREEN + "  [1]" + Colors.RESET + " Approve (APPROVED)");
+        System.out.println(Colors.RED + "  [2]" + Colors.RESET + " Reject (REJECTED)");
+        System.out.print(Colors.BOLD + " Choose an option: " + Colors.RESET);
+
         return Integer.parseInt(scanner.nextLine());
     }
 

@@ -4,67 +4,68 @@ import java.util.Scanner;
 
 public class HireCandidateView {
 
-
     private Scanner scanner;
 
     public HireCandidateView() {
         this.scanner = new Scanner(System.in);
     }
 
-    public void showNoApprovedApplications()
-    {
-        System.out.println("There are no Approved Applications!");
+    public void showNoApprovedApplications() {
+        Colors.warning("There are no Approved Applications!");
+        Colors.showDivider();
     }
 
-    public int readId()
-    {
-        System.out.println("========================================");
-        System.out.println("Application Id:");
+    public int readId() {
+        Colors.showHeader("HIRE CANDIDATE");
+        System.out.print(Colors.BOLD + " Application ID: " + Colors.RESET);
+
         int id;
-        while (true){
-            if (scanner.hasNextInt()){
-                id= scanner.nextInt();
+        while (true) {
+            if (scanner.hasNextInt()) {
+                id = scanner.nextInt();
                 scanner.nextLine();
                 break;
             }
-            System.out.println("Type a valid integer number for the application id.");
+
+            Colors.error("Type a valid integer number for the application id.");
             scanner.nextLine();
         }
+
         return id;
     }
 
-
-    public void showApplicationNotFound()
-    {
-        System.out.println("Application not Found!");
+    public void showApplicationNotFound() {
+        Colors.error("Application not Found!");
+        Colors.showDivider();
     }
 
     public void showApplicationAlreadyHired() {
-        System.out.println("This application has already resulted in a hire.");
-
+        Colors.warning("This Application Has Already Resulted in a Hire.");
+        Colors.showDivider();
     }
 
-    public void showSuccess()
-    {
-        System.out.println("Candidate Hired Successfully");
+    public void showSuccess() {
+        Colors.success("Candidate Hired Successfully");
+        Colors.showDivider();
     }
 
     public void showNotApproved() {
-        System.out.println("Application is not approved!");
+        Colors.warning("Application is Not Approved!");
+        Colors.showDivider();
     }
 
-    public void showCandidateAlreadyEmployee()
-    {
-        System.out.println("Candidate is already and employee!");
+    public void showCandidateAlreadyEmployee() {
+        Colors.warning("Candidate is Already an Employee!");
+        Colors.showDivider();
     }
 
-    public void showApplicationCorrupted()
-    {
-        System.out.println("Application data is corrupted.");
+    public void showApplicationCorrupted() {
+        Colors.error("Application Data is Corrupted.");
+        Colors.showDivider();
     }
 
-    public void showUnexpectedError()
-    {
-        System.out.println("An unexpected error occurred while hiring the candidate.");
+    public void showUnexpectedError() {
+        Colors.error("An Unexpected Error Occurred While Hiring the Candidate.");
+        Colors.showDivider();
     }
 }
