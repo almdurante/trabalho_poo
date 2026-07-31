@@ -53,6 +53,11 @@ public class ManagerController {
                 }
                 case 7:
                 {
+                    controllers.hireCandidateController.hire();
+                    break;
+                }
+                case 8:
+                {
                     return;
                 }
             }

@@ -3,6 +3,7 @@ import Model.Employee;
 import Repository.ApplicationsRepository;
 import Repository.CandidateRepository;
 import Repository.JobPostingRepository;
+import Repository.EmployeeRepository;
 import View.*;
 
 
@@ -12,6 +13,7 @@ public class Main {
         ApplicationsRepository applicationsRepository = new ApplicationsRepository();
         JobPostingRepository jobPostingRepository = new JobPostingRepository();
         CandidateRepository candidateRepository = new CandidateRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         Controllers controllers = new Controllers();
 
 
@@ -42,6 +44,8 @@ public class Main {
                 new EmployeeMenuView(views);
         views.registerCandidateView =
                 new RegisterCandidateView();
+        views.hireCandidateView = 
+                new HireCandidateView();
 
         controllers.createJobPostingController =
                 new CreateJobPostingController(jobPostingRepository, views);
@@ -59,7 +63,8 @@ public class Main {
                 = new RegisterCandidateController(candidateRepository,views);
         controllers.reviewApplicationController =
                 new ReviewApplicationController(controllers.listApplicationsController,views,applicationsRepository);
-
+        controllers.hireCandidateController = 
+                new HireCandidateController(views.hireCandidateView, applicationsRepository, employeeRepository, candidateRepository, jobPostingRepository);
 
         ManagerController managerController =
                 new ManagerController(views.managerMenuView,controllers);
