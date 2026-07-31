@@ -25,8 +25,7 @@ public class MainMenuView {
             System.out.println();
             System.out.println(Colors.CYAN + "  [1]" + Colors.RESET + " Manager Area");
             System.out.println(Colors.CYAN + "  [2]" + Colors.RESET + " Candidate Area");
-            System.out.println(Colors.CYAN + "  [3]" + Colors.RESET + " Employee Area");
-            System.out.println(Colors.RED + "  [4]" + Colors.RESET + " Exit System");
+            System.out.println(Colors.RED + "  [3]" + Colors.RESET + " Exit System");
             System.out.println();
             Colors.showDivider();
             System.out.print(Colors.BOLD + " Select option: " + Colors.RESET);
@@ -40,12 +39,12 @@ public class MainMenuView {
             opt = scanner.nextInt();
             scanner.nextLine();
 
-            if (opt <= 0 || opt > 4) {
+            if (opt <= 0 || opt > 3) {
                 Colors.error("Invalid Option!");
                 System.out.println();
             }
 
-        } while (opt <= 0 || opt > 4);
+        } while (opt <= 0 || opt > 3);
 
         return opt;
     }

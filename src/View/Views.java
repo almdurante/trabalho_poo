@@ -5,7 +5,6 @@ public class Views {
     public MainMenuView mainMenuView;
     public ManagerMenuView managerMenuView;
     public CandidateMenuView candidateMenuView;
-    public EmployeeMenuView employeeMenuView;
 
     public ListEmployeesView listEmployeesView;
     public HireCandidateView hireCandidateView;

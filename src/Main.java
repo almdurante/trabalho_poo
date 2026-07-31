@@ -42,8 +42,6 @@ public class Main {
                 new ListApplicationsView();
         views.applyJobPostingView
                 = new ApplyJobPostingView();
-        views.employeeMenuView =
-                new EmployeeMenuView(views);
         views.registerCandidateView =
                 new RegisterCandidateView();
         views.hireCandidateView =
@@ -85,10 +83,8 @@ public class Main {
                 new ManagerController(views.managerMenuView,controllers);
         CandidateController candidateController =
                 new CandidateController(views.candidateMenuView,controllers,candidateRepository);
-        EmployeeController employeeController =
-                new EmployeeController(views.employeeMenuView,controllers);
         MainController mainController =
-                new MainController(views.mainMenuView,managerController,candidateController,employeeController);
+                new MainController(views.mainMenuView,managerController,candidateController);
 
         mainController.start();
 

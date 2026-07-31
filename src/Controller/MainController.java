@@ -9,14 +9,12 @@ public class MainController {
 
     private ManagerController managerController;
     private CandidateController candidateController;
-    private EmployeeController employeeController;
 
 
-    public MainController(MainMenuView mainMenuView, ManagerController managerController, CandidateController candidateController, EmployeeController employeeController) {
+    public MainController(MainMenuView mainMenuView, ManagerController managerController, CandidateController candidateController) {
         this.mainMenuView = mainMenuView;
         this.managerController = managerController;
         this.candidateController = candidateController;
-        this.employeeController = employeeController;
     }
 
     public void start()
@@ -39,13 +37,9 @@ public class MainController {
                 }
                 case 3:
                 {
-                    employeeController.menu();
-                    break;
-                }
-                case 4:
-                {
                     return;
                 }
+
             }
         }
 
